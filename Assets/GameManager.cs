@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI ClockText;
-
+    
     private float elapsedTime;
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         // get key down - only the first frame
         // maybe we want to add a black sprite with translucence on it in front of camera?
         
@@ -44,5 +46,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("you win");
         }
+        
+        
     }
+
+   
 }
