@@ -9,13 +9,13 @@ public class MonsterSpawner : MonoBehaviour
 
     public Transform[] spawnpoints;
 
-    public float minSpawnInterval = 10f;
+    public float minSpawnInterval = 15f;
 
-    public float maxSpawnInterval = 20f;
+    public float maxSpawnInterval = 25f;
    
-    public float reducedSpawnInterval = 0.25f;
+    public float reducedSpawnInterval = 0.5f;
     
-    public float intitalDelay = 7.5f;
+    public float intitalDelay = 10f;
 
     private GameObject currentMonster;
     // Start is called before the first frame update

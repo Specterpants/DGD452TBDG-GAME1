@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class MonsterCode : MonoBehaviour
@@ -17,11 +18,25 @@ public class MonsterCode : MonoBehaviour
     private int clicksRequired;
     private int clicksReceived;
 
+    private float SpawnTime;
+    public float MaxActiveTime = 45f;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         clicksRequired = Random.Range(1, 6);
         clicksReceived = 0;
+        SpawnTime = Time.time;
+    }
+
+    private void Update()
+    {
+        if (Time.time - SpawnTime > MaxActiveTime)
+        {
+            Debug.Log("you lose");
+
+            //SceneManager.LoadScene("GameOver");
+        }
     }
 
     public void Initialize(int index)
@@ -55,19 +70,5 @@ public class MonsterCode : MonoBehaviour
     private void DestroyMonster()
     {
         Destroy(gameObject);
-    }
-
-   
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

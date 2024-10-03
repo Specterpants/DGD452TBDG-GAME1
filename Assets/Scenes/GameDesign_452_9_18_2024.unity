@@ -1508,8 +1508,8 @@ MonoBehaviour:
   - {fileID: 1055683163}
   - {fileID: 1275890163}
   - {fileID: 2016374016}
-  minSpawnInterval: 5
-  maxSpawnInterval: 10
+  minSpawnInterval: 15
+  maxSpawnInterval: 25
   reducedSpawnInterval: 0.5
   intitalDelay: 10
 --- !u!4 &1055683163
