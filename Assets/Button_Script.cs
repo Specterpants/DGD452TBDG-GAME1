@@ -7,9 +7,12 @@ public class Button_Script : MonoBehaviour
 {
     public Camera camera; // Reference to the Camera.
     public Transform targetPos; // The target position where the camera should move.
-    public float moveDelayTime = 1.2f; // Delay time in seconds.
+    public float moveDelayTime = 1.5f; // Delay time in seconds.
     public static bool currentlyMoving = false;
     public AudioSource runningSound;
+    
+    // Reference to the object with the Sleeping_Code script
+    public GameObject sleepingObject;
     void Start()
     {
         runningSound.Stop();
@@ -35,6 +38,7 @@ public class Button_Script : MonoBehaviour
                     //Make sure they player can't move to another location.
                     currentlyMoving = true;
                     runningSound.Play();
+                    Debug.Log("FADE");
                 }
             }
         }
@@ -51,7 +55,7 @@ public class Button_Script : MonoBehaviour
     // Coroutine to wait for a delay before moving the camera.
     IEnumerator MoveCameraWithDelay()
     {
-        // Wait for the specified amount of time (moveDelayTime).
+        // Wait for the specified amount of time.
         yield return new WaitForSeconds(moveDelayTime);
 
         // Move the camera to the target position after the delay.
@@ -62,5 +66,19 @@ public class Button_Script : MonoBehaviour
         //Allow the Player to move again.
         currentlyMoving = false;
         runningSound.Stop();
+    }
+    
+    // This function is called when the user clicks on the button object
+    void OnMouseDown()
+    {
+        // If the sleepingObject is assigned, trigger the reappearing/disappearing process
+        if (sleepingObject != null)
+        {
+            Sleeping_Code sleepingScript = sleepingObject.GetComponent<Sleeping_Code>();
+            if (sleepingScript != null)
+            {
+                sleepingScript.StartReappear();
+            }
+        }
     }
 }
