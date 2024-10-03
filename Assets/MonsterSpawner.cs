@@ -58,6 +58,10 @@ public class MonsterSpawner : MonoBehaviour
         
 
        currentMonster = Instantiate(Monster, spawnpoint.position, spawnpoint.rotation);
+
+       MonsterCode monsterScript = currentMonster.GetComponent<MonsterCode>();
+       monsterScript.Initialize(randomindex);
+
     }
 
     public void OnMonsterDestroyed()
