@@ -9,9 +9,9 @@ public class MonsterSpawner : MonoBehaviour
 
     public Transform[] spawnpoints;
 
-    public float minSpawnInterval = 1f;
+    public float minSpawnInterval = 15f;
 
-    public float maxSpawnInterval = 5f;
+    public float maxSpawnInterval = 25f;
    
     public float reducedSpawnInterval = 0.5f;
     
