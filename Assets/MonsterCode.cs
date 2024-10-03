@@ -48,7 +48,7 @@ public class MonsterCode : MonoBehaviour
         }
         else
         {
-            Debug.Log("Player clicked on enemy");
+            Debug.Log("Player clicked on Monster");
         }
     }
 

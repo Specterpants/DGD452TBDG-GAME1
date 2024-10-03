@@ -1,148 +1,64 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Sleeping_Code : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
+    public GameObject targetObject;   // The object whose opacity will change
+    public float countdownTime = 5f;  // The countdown duration in seconds
+    private float currentCountdown;   // Tracks the current time left in the countdown
+    public Button_Script buttonScript; // Reference to the Button_Script that controls canSleep
+    private SpriteRenderer targetSpriteRenderer;  // Reference to the SpriteRenderer of the target object
 
     void Start()
     {
-        // Get the SpriteRenderer component attached to the GameObject
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        // Store the original color of the sprite
-        originalColor = spriteRenderer.color;
-
-        // Initially make the object invisible (if required)
-        SetSpriteOpacity(0f);
-    }
-
-    // Public method to start the reappearing and disappearing process
-    public void StartReappear()
-    {
-        StartCoroutine(FadeInAndOut());
-    }
-
-    // Coroutine to fade in the object, wait for 2 seconds, then fade it out
-    IEnumerator FadeInAndOut()
-    {
-        // Fade in (increase opacity to 1)
-        for (float alpha = 0f; alpha < 1f; alpha += 0.05f)
+        // Get the SpriteRenderer component of the target object
+        if (targetObject != null)
         {
-            SetSpriteOpacity(alpha);
-            yield return new WaitForSeconds(0.05f);
+            targetSpriteRenderer = targetObject.GetComponent<SpriteRenderer>();
+            SetTargetObjectOpacity(0f);  // Set the target object to be invisible initially
+        }
+        else
+        {
+            Debug.LogError("Target Object is not assigned in the Inspector!");
         }
 
-        // Ensure it's fully opaque
-        SetSpriteOpacity(1f);
-
-        // Wait for 2 seconds while the object is fully visible
-        yield return new WaitForSeconds(1.3f);
-
-        // Fade out (reduce opacity to 0)
-        for (float alpha = 1f; alpha > 0; alpha -= 0.05f)
-        {
-            SetSpriteOpacity(alpha);
-            yield return new WaitForSeconds(0.05f);
-        }
-
-        // Ensure the opacity is fully gone at the end
-        SetSpriteOpacity(0f);
-    }
-
-    // Helper function to set the sprite's opacity
-    private void SetSpriteOpacity(float alpha)
-    {
-        Color newColor = originalColor;
-        newColor.a = alpha;
-        spriteRenderer.color = newColor;
-    }
-}
-
-
-
-
-
-/*
-public float fadeDuration = 0.5f;
-    private SpriteRenderer spriteRenderer;
-    private float fadeElapsed = 0f;
-    private bool shouldFade = false;
-
-    // States for whether fading in or fading out
-    private bool isFadingOut = false;
-    private bool isFadingIn = false;
-    
-    void Start()
-    {
-        // Get the SpriteRenderer component from the object
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // Initialize the countdown timer
+        currentCountdown = countdownTime;
     }
 
     void Update()
     {
-        // When the player presses space, start fading in
-        if (Button_Script.currentlyMoving == false)
+        // Access canSleep from Button_Script and check if Space Bar is being held down
+        if (buttonScript != null && buttonScript.canSleep && Input.GetKey(KeyCode.Space))
         {
-            isFadingIn = true;
-            isFadingOut = false;  // Cancel fade out if it's in progress
-            shouldFade = false;
-            //fadeElapsed = 0f;    // Reset fade timer
-        }
+            // Decrease the countdown timer
+            currentCountdown -= Time.deltaTime;
 
-        // When the player releases space, start fading out
-        else if (Button_Script.currentlyMoving == true)
-        {
-            isFadingOut = true;
-            isFadingIn = false;  // Cancel fade in if it's in progress
-            shouldFade = true;
-            //fadeElapsed = 0f;  // Reset fade timer
-        }
+            // Update the target object's opacity to make it visible
+            SetTargetObjectOpacity(1f);
 
-        //Same shit but for the Player Moving
-
-        if (!shouldFade)
-        {
-            return;
-        }
-            
-        // Fading out
-        if (isFadingOut)
-        {
-            fadeElapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, fadeElapsed / fadeDuration);
-            
-            //No idea
-            Color newColor = new Color(0,0,0, alpha);
-            spriteRenderer.color = newColor;
-
-            // Stop fading out when the object is fully in
-            if (alpha <= 0f)
+            // Check if the countdown timer has reached 0
+            if (currentCountdown <= 0f)
             {
-                isFadingOut = false;
-                fadeElapsed = 0;
-                shouldFade = false;
+                // Load the "WinRoom" scene when the timer reaches 0
+                SceneManager.LoadScene("WinRoom");
             }
         }
-
-        // Fading in
-        else if (isFadingIn)
+        else if (Input.GetKeyUp(KeyCode.Space))
         {
-            fadeElapsed += Time.deltaTime;
-            float alpha = Mathf.Lerp(0f, 1f, fadeElapsed / fadeDuration);
-            Debug.Log(fadeElapsed);
-            //No idea
-            Color newColor = new Color(0,0,0, alpha);
-            spriteRenderer.color = newColor;
-
-            // Stop fading in when the object is fully in
-            if (alpha >= 1f)
-            {
-                isFadingIn = false;
-                fadeElapsed = 0;
-                shouldFade = false;
-            }
+            // Make the target object invisible and stop the countdown when Space Bar is released
+            SetTargetObjectOpacity(0f);
         }
     }
-*/
+
+    // Function to change the target object's opacity
+    private void SetTargetObjectOpacity(float alpha)
+    {
+        if (targetSpriteRenderer != null)
+        {
+            Color color = targetSpriteRenderer.color;
+            color.a = alpha;  // Set the alpha (opacity) value
+            targetSpriteRenderer.color = color;
+        }
+    }
+}

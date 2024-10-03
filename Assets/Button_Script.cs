@@ -11,8 +11,8 @@ public class Button_Script : MonoBehaviour
     public static bool currentlyMoving = false;
     public AudioSource runningSound;
     
-    // Reference to the object with the Sleeping_Code script
-    public GameObject sleepingObject;
+    public GameObject sleepingObject; // Reference to the object with the Sleeping_Code script
+    public bool canSleep = false;  // Tracks if the player is in the area to sleep.
     void Start()
     {
         runningSound.Stop();
@@ -39,6 +39,17 @@ public class Button_Script : MonoBehaviour
                     currentlyMoving = true;
                     runningSound.Play();
                     Debug.Log("FADE");
+
+                    if (targetPos == CompareTag("atBed"))
+                    {
+                        canSleep = true;
+                        
+                    }
+
+                    else if (targetPos == CompareTag("notAtBed"))
+                    {
+                        canSleep = false;
+                    }
                 }
             }
         }
@@ -74,7 +85,7 @@ public class Button_Script : MonoBehaviour
         // If the sleepingObject is assigned, trigger the reappearing/disappearing process
         if (sleepingObject != null)
         {
-            Sleeping_Code sleepingScript = sleepingObject.GetComponent<Sleeping_Code>();
+            Fade_code sleepingScript = sleepingObject.GetComponent<Fade_code>();
             if (sleepingScript != null)
             {
                 sleepingScript.StartReappear();

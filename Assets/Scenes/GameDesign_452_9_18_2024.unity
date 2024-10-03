@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 78562363}
   m_Layer: 0
   m_Name: Closet Button
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,6 +159,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &78562361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -722,7 +723,7 @@ Transform:
   m_GameObject: {fileID: 441000641}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9.089}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 2.5806, y: 3.3708, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -799,7 +800,7 @@ GameObject:
   - component: {fileID: 480232274}
   m_Layer: 0
   m_Name: Bed Button
-  m_TagString: Untagged
+  m_TagString: atBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -821,6 +822,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &480232272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -882,7 +884,7 @@ Transform:
   m_GameObject: {fileID: 480232270}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.2, z: 0}
+  m_LocalPosition: {x: 0, y: -4.2, z: -2}
   m_LocalScale: {x: 6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -944,6 +946,7 @@ GameObject:
   m_Component:
   - component: {fileID: 649124756}
   - component: {fileID: 649124755}
+  - component: {fileID: 649124757}
   m_Layer: 0
   m_Name: Bed Sit
   m_TagString: Untagged
@@ -1018,6 +1021,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &649124757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649124754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c1aa3667e34eb47bce1a88fa8e95ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 0}
+  countdownTime: 5
+  buttonScript: {fileID: 0}
 --- !u!1 &773775607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1396,7 @@ GameObject:
   - component: {fileID: 913950619}
   - component: {fileID: 913950618}
   m_Layer: 0
-  m_Name: HoldSpaceToSleep
+  m_Name: HoldSpaceToSleepText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1523,7 +1541,7 @@ GameObject:
   - component: {fileID: 1064694585}
   m_Layer: 0
   m_Name: Window Button
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,6 +1563,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1064694583
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1712,7 +1731,7 @@ GameObject:
   - component: {fileID: 1326394025}
   m_Layer: 0
   m_Name: Go Back (1)
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1779,6 +1798,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1326394027
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1840,7 +1860,7 @@ Transform:
   m_GameObject: {fileID: 1326394024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.15, y: 6.56, z: 0}
+  m_LocalPosition: {x: -13.15, y: 6.56, z: -2}
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1861,7 +1881,7 @@ GameObject:
   - component: {fileID: 1426391751}
   m_Layer: 0
   m_Name: Go Back (2)
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1928,6 +1948,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1426391753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1989,7 +2010,7 @@ Transform:
   m_GameObject: {fileID: 1426391750}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.22, y: 11.45, z: 0}
+  m_LocalPosition: {x: 0.22, y: 11.45, z: -2}
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2090,6 +2111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1674066956}
   - component: {fileID: 1674066955}
+  - component: {fileID: 1674066957}
   m_Layer: 0
   m_Name: Bed Location
   m_TagString: Untagged
@@ -2164,6 +2186,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674066957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674066954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c1aa3667e34eb47bce1a88fa8e95ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 882469807}
+  countdownTime: 5
+  buttonScript: {fileID: 480232271}
 --- !u!1 &1756795967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2406,7 @@ GameObject:
   - component: {fileID: 1757351909}
   m_Layer: 0
   m_Name: Go Back (4)
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2436,6 +2473,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1757351911
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2497,7 +2535,7 @@ Transform:
   m_GameObject: {fileID: 1757351908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.05, z: 0}
+  m_LocalPosition: {x: 0, y: -11.05, z: -2}
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2518,7 +2556,7 @@ GameObject:
   - component: {fileID: 1818996322}
   m_Layer: 0
   m_Name: Doorway Button
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2540,6 +2578,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1818996320
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2835,7 +2874,7 @@ GameObject:
   - component: {fileID: 1921362332}
   m_Layer: 0
   m_Name: Go Back (3)
-  m_TagString: Untagged
+  m_TagString: notAtBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2902,6 +2941,7 @@ MonoBehaviour:
   moveDelayTime: 2
   runningSound: {fileID: 1756795971}
   sleepingObject: {fileID: 882469807}
+  canSleep: 0
 --- !u!212 &1921362334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2963,7 +3003,7 @@ Transform:
   m_GameObject: {fileID: 1921362331}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.34, y: 6.51, z: 0}
+  m_LocalPosition: {x: 13.34, y: 6.51, z: -2}
   m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3305,7 +3345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6814205160931284191, guid: a01bb01a766f69e4ebd4546f4b81cf26, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.886
       objectReference: {fileID: 0}
     - target: {fileID: 6814205160931284191, guid: a01bb01a766f69e4ebd4546f4b81cf26, type: 3}
       propertyPath: m_LocalRotation.w
