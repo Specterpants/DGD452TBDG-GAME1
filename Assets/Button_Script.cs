@@ -13,6 +13,7 @@ public class Button_Script : MonoBehaviour
     
     public GameObject sleepingObject; // Reference to the object with the Sleeping_Code script
     public bool canSleep = false;  // Tracks if the player is in the area to sleep.
+
     void Start()
     {
         runningSound.Stop();
@@ -46,7 +47,7 @@ public class Button_Script : MonoBehaviour
                         
                     }
 
-                    else if (targetPos == CompareTag("notAtBed"))
+                    if (targetPos == CompareTag("notAtBed"))
                     {
                         canSleep = false;
                     }
